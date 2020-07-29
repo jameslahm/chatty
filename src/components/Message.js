@@ -1,19 +1,15 @@
 /**@jsx jsx */
-import {jsx,css} from '@emotion/core'
-import { useState, useEffect } from 'react';
-import { db } from '../services/firebase';
-import { auth } from 'firebase';
+import { jsx, css } from "@emotion/core";
 
 function Message({ message }) {
-  const [messageSender,setMessageSender]=useState("")
-  useEffect(()=>{
-    
-  })
-
-  return <div css={
-    css`display:flex;`
-  }>
-    <img src={}></img>
-    {message.content}</div>;
+  return (
+    <div
+      css={css`
+        display: flex;
+      `}
+    >
+      {message.content}
+    </div>
+  );
 }
 export default Message;
