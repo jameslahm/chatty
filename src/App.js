@@ -1,6 +1,4 @@
-/** @jsx jsx */
-import { jsx, css } from "@emotion/core";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
@@ -11,16 +9,12 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import { AuthContext } from "./helpers/auth";
 import Header from "./components/Header";
-import "./helpers/theme";
 import { ThemeProvider } from "emotion-theming";
+import theme from "./helpers/theme";
+import {Box} from 'rebass'
 
 function App() {
   const [user, setUser] = useState(auth().currentUser);
-  // eslint-disable-next-line no-unused-vars
-  const [theme, setTheme] = useState({
-    spacing: (n) => `${(8 * n).toString()}px`,
-  });
-
   useEffect(() => {
     return auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -29,17 +23,10 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <AuthContext.Provider value={{user,setUser}}>
+      <AuthContext.Provider value={{ user, setUser }}>
         <Router>
-          <div
-            css={css`
-              max-width: 650px;
-              padding:0 1rem;
-              margin: 3rem auto;
-            `}
-          >
+          <Box maxWidth="750px" mx="auto" pt={3} px={2}>
             <Header></Header>
-
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <PrivateRoute
@@ -58,7 +45,7 @@ function App() {
                 component={Login}
               ></PublicRoute>
             </Switch>
-          </div>
+          </Box>
         </Router>
       </AuthContext.Provider>
     </ThemeProvider>

@@ -1,55 +1,39 @@
-/**@jsx jsx */
-import { jsx, css } from "@emotion/core";
-import {useContext} from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-import styled from "@emotion/styled";
-import {AuthContext} from '../helpers/auth'
-
-const Li = styled.li`
-  display: inline-block;
-  margin-right: ${(props) => props.theme.spacing(2)};
-`;
+import { Flex, Heading, Box } from "rebass";
+import { auth } from "../services/firebase";
 
 function Header() {
-  const {setUser}=useContext(AuthContext)
   return (
-    <header
-      css={css`
-        display: flex;
-        justify-content:space-between;
-      `}
-    >
-      <Link
-        to="/"
-        css={css`
-          text-decoration: none;
-          background-image: none;
-        `}
-      >
-        <h3
-          css={css`
-            display: inline;
-          `}
-        >
+    <Flex alignItems="center" justifyContent="space-between">
+      <Link to="/">
+        <Heading color="text" fontSize={5}>
           Chatty
-        </h3>
+        </Heading>
       </Link>
-      <ul
-        css={css`
-          list-style: none;
-        `}
-      >
-        <Li>
-          <Link to="/chat">Chat</Link>
-        </Li>
-        <Li>
-          <Link to="/login">Login</Link>
-        </Li>
-        <Li>
-          <Link onClick={()=>{setUser(undefined)}}>Logout</Link>
-        </Li>
-      </ul>
-    </header>
+      <Flex>
+        <Box mr={2}>
+          <Link to="/chat" sx={{ backgroundColor: "red" }}>
+            <Heading color="primary">Chat</Heading>
+          </Link>
+        </Box>
+        <Box mr={2}>
+          <Link to="/login">
+            <Heading color="primary">Login</Heading>
+          </Link>
+        </Box>
+        <Box>
+          <Link
+            to="/"
+            onClick={() => {
+              auth().signOut();
+            }}
+          >
+            <Heading color="primary">Logout</Heading>
+          </Link>
+        </Box>
+      </Flex>
+    </Flex>
   );
 }
 

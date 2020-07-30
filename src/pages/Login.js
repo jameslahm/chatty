@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { signin } from "../helpers/auth";
 import { Link } from "react-router-dom";
+import { Box, Button, Heading, Text } from "rebass";
+import { Input, Label } from "@rebass/forms";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,40 +15,70 @@ function Login() {
     } catch {}
   };
   return (
-    <div>
+    <Box>
+      <Heading mt={4}>
+        Login to <Link to="/">Chatty</Link>
+      </Heading>
       <form onSubmit={handleSubmit}>
-        <h1>
-          Login to <Link to="/">Chatty</Link>
-        </h1>
-        <p>Fill in the form below to login to your account</p>
-        <div>
-          <input
+        <Box mt={3}>
+          <Label
+            htmlFor="email"
+            sx={{
+              fontFamily: "body",
+            }}
+          >
+            Email
+          </Label>
+          <Input
+            id="email"
             placeholder="Email"
             type="email"
+            sx={{
+              outline: "none",
+              fontFamily: "body",
+              ":focus": {
+                boxShadow: "input",
+              },
+            }}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
             value={email}
-          ></input>
-        </div>
-        <div>
-          <input
+          ></Input>
+        </Box>
+        <Box mt={2}>
+          <Label
+            htmlFor="Password"
+            sx={{
+              fontFamily: "body",
+            }}
+          >
+            Password
+          </Label>
+          <Input
             type="password"
             name="password"
+            sx={{
+              outline: "none",
+              fontFamily: "body",
+              ":focus": {
+                boxShadow: "input",
+              },
+            }}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
             value={password}
-          ></input>
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-        <p>
+          ></Input>
+        </Box>
+        <Box mt={2}>
+          <Button type="submit">Submit</Button>
+        </Box>
+        <Text mt={1} fontFamily="body" fontSize={2}>
           Don't have an account? <Link to="/signup">SignUp</Link>
-        </p>
+        </Text>
       </form>
-    </div>
+    </Box>
   );
 }
 export default Login;

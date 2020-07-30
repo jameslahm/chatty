@@ -3,21 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@rebass/forms": "^4.0.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "compass-vertical-rhythm": "^1.4.5",
+    "date-fns": "^2.15.0",
     "emotion-theming": "^10.0.27",
     "firebase": "^7.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "typography": "^0.16.19",
-    "typography-theme-fairy-gates": "^0.16.19"
+    "rebass": "^4.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,8 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "lint-staged":{
-    "*.{js}":"prettier --write"
+  "lint-staged": {
+    "*.{js}": "prettier --write"
   },
   "husky": {
     "hooks": {
