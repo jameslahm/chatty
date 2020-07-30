@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 const { RTCPeerConnection, RTCSessionDescription } = window;
 
-const socket = io.connect("http://Chatty-env.eba-mvkmdhuw.us-east-1.elasticbeanstalk.com");
+const socket = io.connect("https://chatty-server-wa.herokuapp.com/");
 
 export { socket };
 
