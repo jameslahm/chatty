@@ -26,7 +26,7 @@ function SignUp() {
 
   return (
     <Box>
-      <Heading fontSize={3} mt={4}>
+      <Heading fontSize={4} mt={4}>
         Sign Up to{" "}
         <Link to="/" style={{ color: "inherit" }}>
           Chatty

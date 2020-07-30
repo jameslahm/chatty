@@ -13,7 +13,12 @@ function Header() {
       </Link>
       <Flex>
         <Box mr={2}>
-          <Link to="/chat" sx={{ backgroundColor: "red" }}>
+          <Link to="/video">
+            <Heading color="primary">Video</Heading>
+          </Link>
+        </Box>
+        <Box mr={2}>
+          <Link to="/chat">
             <Heading color="primary">Chat</Heading>
           </Link>
         </Box>

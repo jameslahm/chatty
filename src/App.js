@@ -11,7 +11,8 @@ import { AuthContext } from "./helpers/auth";
 import Header from "./components/Header";
 import { ThemeProvider } from "emotion-theming";
 import theme from "./helpers/theme";
-import {Box} from 'rebass'
+import { Box } from "rebass";
+import Video from "./pages/Video";
 
 function App() {
   const [user, setUser] = useState(auth().currentUser);
@@ -29,6 +30,11 @@ function App() {
             <Header></Header>
             <Switch>
               <Route exact path="/" component={Home}></Route>
+              <PrivateRoute
+                path="/video"
+                authenticated={!!user}
+                component={Video}
+              ></PrivateRoute>
               <PrivateRoute
                 path="/chat"
                 authenticated={!!user}

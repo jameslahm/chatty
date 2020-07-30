@@ -1,7 +1,8 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, useLocation } from "react-router-dom";
 
 function PublicRoute({ component: Component, authenticated, ...rest }) {
+  const location = useLocation();
   return (
     <Route
       {...rest}
@@ -9,7 +10,7 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
         authenticated === false ? (
           <Component {...props}></Component>
         ) : (
-          <Redirect to="/chat"></Redirect>
+          <Redirect to={location.state ? location.state.from : "/"}></Redirect>
         )
       }
     ></Route>

@@ -16,8 +16,8 @@ function Login() {
   };
   return (
     <Box>
-      <Heading mt={4}>
-        Login to <Link to="/">Chatty</Link>
+      <Heading fontSize={4} mt={4}>
+        Login to <Link to="/" style={{color:"inherit"}}>Chatty</Link>
       </Heading>
       <form onSubmit={handleSubmit}>
         <Box mt={3}>
