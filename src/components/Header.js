@@ -13,6 +13,11 @@ function Header() {
       </Link>
       <Flex>
         <Box mr={2}>
+          <Link to="/meeting">
+            <Heading color="primary">Meeting</Heading>
+          </Link>
+        </Box>
+        <Box mr={2}>
           <Link to="/video">
             <Heading color="primary">Video</Heading>
           </Link>

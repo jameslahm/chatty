@@ -13,6 +13,7 @@ import { ThemeProvider } from "emotion-theming";
 import theme from "./helpers/theme";
 import { Box } from "rebass";
 import Video from "./pages/Video";
+import Meeting from "./pages/Meeting";
 
 function App() {
   const [user, setUser] = useState(auth().currentUser);
@@ -30,6 +31,11 @@ function App() {
             <Header></Header>
             <Switch>
               <Route exact path="/" component={Home}></Route>
+              <PrivateRoute
+                path="/meeting"
+                authenticated={!!user}
+                component={Meeting}
+              ></PrivateRoute>
               <PrivateRoute
                 path="/video"
                 authenticated={!!user}
