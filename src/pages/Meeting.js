@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Jitsi from "react-jitsi";
-import { Box, Button, Flex } from "rebass";
+import { Box, Button, Flex,Text } from "rebass";
 import { Input, Label } from "@rebass/forms";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { useTheme } from "emotion-theming";
+import copy from "clipboard-copy";
+import Tooltip from "rc-tooltip";
+import "rc-tooltip/assets/bootstrap.css";
 
 function Meeting() {
   const [displayName, setDisplayName] = useState("");
@@ -105,28 +108,71 @@ function Meeting() {
           </form>
         </Box>
       ) : (
-        <Jitsi
-          roomName={room}
-          displayName={displayName}
-          password={password}
-          config={{ prejoinPageEnabled: false }}
-          containerStyle={{ width: "100%", height: "70vh" }}
-          loadingComponent={() => (
-            <Flex
-              justifyContent="center"
-              height="100%"
-              alignItems="center"
-              color="primary"
+        <Box>
+          <Jitsi
+            roomName={room}
+            displayName={displayName}
+            password={password}
+            config={{ prejoinPageEnabled: false }}
+            interfaceConfig={{
+              APP_NAME: "Chatty",
+              HIDE_INVITE_MORE_HEADER: true,
+              TOOLBAR_BUTTONS: [
+                "microphone",
+                "camera",
+                "fullscreen",
+                "fodeviceselection",
+                "hangup",
+                "profile",
+                "chat",
+                "settings",
+                "videoquality",
+                "tileview",
+                "download",
+                "help",
+                "mute-everyone",
+                "security",
+              ],
+            }}
+            containerStyle={{ width: "100%", height: "70vh" }}
+            loadingComponent={() => (
+              <Flex
+                justifyContent="center"
+                height="100%"
+                alignItems="center"
+                color="primary"
+              >
+                <Loader
+                  width={150}
+                  height={150}
+                  color={theme.colors.primary}
+                  type="Hearts"
+                ></Loader>
+              </Flex>
+            )}
+          ></Jitsi>
+          <Flex mt={3} flexDirection="row-reverse">
+            <Tooltip
+              placement="right"
+              trigger={["click"]}
+              overlay={<Text fontFamily="body">Copied</Text>}
+              overlayInnerStyle={{minHeight:"auto",lineHeight:"1.2"}}
             >
-              <Loader
-                width={150}
-                height={150}
-                color={theme.colors.primary}
-                type="Hearts"
-              ></Loader>
-            </Flex>
-          )}
-        ></Jitsi>
+              <Button
+                sx={{
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  copy(
+                    `URL:${window.location.href}\nROOM:${room}\nPASSWORD:${password}`
+                  );
+                }}
+              >
+                Invite
+              </Button>
+            </Tooltip>
+          </Flex>
+        </Box>
       )}
     </Box>
   );
