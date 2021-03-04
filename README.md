@@ -1,5 +1,12 @@
 ## Chatty
 
-### Video Meeting 
+visit [here](https://think-piece-ed400.web.app/)
 
-### Chat Online
+## Features
+- Group Meeting 
+
+- Video 
+
+- Chat
+
+- PWA
