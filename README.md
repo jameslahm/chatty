@@ -5,8 +5,8 @@ visit [here](https://think-piece-ed400.web.app/)
 ## Features
 - Group Meeting 
 
-- Video 
+- Video Chat
 
-- Chat
+- Message Chat
 
 - PWA
